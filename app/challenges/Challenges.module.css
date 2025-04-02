@@ -8,3 +8,37 @@
     margin-bottom: 1rem;  
   }
   
+  .weekChallenge {
+    padding: 1rem;
+    background-color: #ffffff; 
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px 0px rgba(255, 0, 0, 0.30); 
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .weekChallenge h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .weekChallenge p {
+    font-size: 1.1rem;
+    margin-top: 8px;
+  }
+  
+  .changeChallengeButton {
+    background-color: #e53e3e; /* Röd färg */
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .changeChallengeButton:hover {
+    background-color: #c53030;
+  }

@@ -1,0 +1,64 @@
+.container {
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .challengeCard {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+  }
+  
+  .challengeText {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  
+  .buttonGroup {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .saveButton, .editButton, .deleteButton, .selectButton, .addButton {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s ease;
+  }
+  
+  .saveButton { background: #4caf50; color: white; }
+  .editButton { background: #ffc107; color: white; }
+  .deleteButton { background: #f44336; color: white; }
+  .selectButton { background: #2196f3; color: white; margin-top: 10px; }
+  .addButton { background: #673ab7; color: white; margin-top: 10px; }
+  
+  .input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  .navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  

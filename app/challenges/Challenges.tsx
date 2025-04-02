@@ -1,17 +1,35 @@
-import { MultiColorButtons } from "~/components/buttons/MultiColorButtons"
-import styles from "~/challenges/Challenges.module.css"
-import { StickyButton } from "~/components/buttons/StickyButton"
-import { useState } from "react"
-import Modal from "~/components/modal/modal"
-import { ResultButton } from "~/components/buttons/ResultButton"
+import { MultiColorButtons } from "~/components/buttons/MultiColorButtons";
+import styles from "~/challenges/Challenges.module.css";
+import { StickyButton } from "~/components/buttons/StickyButton";
+import { useState } from "react";
+import Modal from "~/components/modal/modal";
+import { ResultButton } from "~/components/buttons/ResultButton";
+import ChallengeSelector from "~/components/cards/ChallengeSelector";
 
 export function Challenges() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedChallenge, setSelectedChallenge] = useState<string | null>(null);
 
   return (
     <main>
       <div className={styles.challengesContainer}>
         <h2>No spend-week</h2>
+
+        {/* Visa vald utmaning om en finns, annars visa ChallengeSelector */}
+        {selectedChallenge ? (
+          <div className={styles.weekChallenge}>
+            <h3>Veckans utmaning 🌟</h3>
+            <p>{selectedChallenge}</p>
+            <button
+              onClick={() => setSelectedChallenge(null)}
+              className={styles.changeChallengeButton}
+            >
+              Välj en annan utmaning 🔄
+            </button>
+          </div>
+        ) : (
+          <ChallengeSelector onSelectChallenge={setSelectedChallenge} />
+        )}
       </div>
 
       <MultiColorButtons />
@@ -44,5 +62,5 @@ export function Challenges() {
         </p>
       </Modal>
     </main>
-  )
+  );
 }
