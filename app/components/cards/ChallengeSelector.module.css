@@ -3,6 +3,10 @@
     margin: auto;
     text-align: center;
     padding: 20px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   
   .title {
@@ -47,7 +51,7 @@
   .addButton { background: #673ab7; color: white; margin-top: 10px; }
   
   .input {
-    width: 100%;
+    width: 15rem;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
