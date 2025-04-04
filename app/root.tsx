@@ -33,20 +33,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/x-icon" href="/favicon-light.ico" />
         <Meta />
         <Links />
       </head>
       <body>
         <Header />
-        
         <div className="background-ellipse"></div>
         <div className="background-ellipse2"></div>
-        
         <main>{children}</main>
-        
-
         <Footer /> {/* 👈 Fast footer i botten */}
-
         <ScrollToTopButton />
         <ScrollRestoration />
         <Scripts />
