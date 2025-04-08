@@ -92,7 +92,7 @@ html {
 }
 
 main {
-  padding-top: 80px; /* Skjuter ner innehållet så det inte hamnar bakom headern */
+  padding-top: 12rem; /* Skjuter ner innehållet så det inte hamnar bakom headern */
   z-index: 2;
 }
 

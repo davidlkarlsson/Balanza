@@ -42,6 +42,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div className="background-ellipse"></div>
         <div className="background-ellipse2"></div>
         <main>{children}</main>
+
+        <div id="modal-root"></div> {/* 👈 PORTAL-MÅLET */}
+        
+
         <Footer /> {/* 👈 Fast footer i botten */}
         <ScrollToTopButton />
         <ScrollRestoration />

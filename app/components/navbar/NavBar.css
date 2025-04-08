@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   position: fixed;
-  left: 2rem;
+  left: 0;
 }
 
 /* Desktop-nav */
@@ -16,7 +16,7 @@
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 2rem;
+  gap: 0.5rem;
 }
 
 .nav-links li a {
@@ -42,6 +42,8 @@
 }
 
 .hamburger {
+  position: relative;
+  left: 0.8rem;
   font-size: 2rem;
   background: none;
   border: none;
@@ -90,7 +92,7 @@
 }
 
 /* Media Query: Visa hamburgermeny på små skärmar */
-@media (max-width: 1000px) {
+@media (max-width: 1055px) {
   .nav-desktop {
     display: none;
   }

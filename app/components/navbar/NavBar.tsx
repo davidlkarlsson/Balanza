@@ -46,6 +46,14 @@ export default function NavBar() {
           </li>
           <li>
             <NavLink
+              to="/history"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              Historik
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to="/savingtips"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
@@ -75,6 +83,15 @@ export default function NavBar() {
             onClick={() => setMenuOpen(false)}
           >
             Utmaningar
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/history"
+            className={({ isActive }) => (isActive ? "active" : "")}
+            onClick={() => setMenuOpen(false)}
+          >
+            Historik
           </NavLink>
         </li>
         <li>

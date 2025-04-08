@@ -17,7 +17,7 @@
 
 @media (min-height: 978px) {
   .footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
   }
 }

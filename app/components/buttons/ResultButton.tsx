@@ -1,44 +1,24 @@
-import { loadFromLocalStorage } from "../utilities/localStorageUtils";
 import { CustomButton } from "./CustomButton";
 import styles from "~/components/buttons/ResultButton.module.css";
 import LockWhite from "../../images/lockWhite.svg";
 
 interface ResultButtonProps {
-  onClick: (greenDays: number, totalDays: number) => void;
+  onClick: () => void;
+  disabled?: boolean;
 }
 
-export function ResultButton({ onClick }: ResultButtonProps) {
+export function ResultButton({ onClick, disabled = false }: ResultButtonProps) {
   const todayIndex = new Date().getDay(); // 0 = Söndag, 6 = Lördag
-  const isFriday = todayIndex === 5; // Kolla om det är fredag
-
-  function checkButtonsPushed() {
-    const colors = loadFromLocalStorage("weekColors") || [];
-    
-    // Räkna antalet gröna dagar (de som är markerade med #c5fcc3)
-    const greenDays = colors.filter((color: string) => color === "#c5fcc3").length;
-
-    // Kontrollera om alla dagar är markerade som grön eller röd
-    const allDaysCompleted = colors.every(
-      (color: string) => color === "#c5fcc3" || color === "#ffa2a2"
-    );
-
-    if (!allDaysCompleted) {
-      alert("Var vänlig och markera alla dagar som 'avklarade' eller 'inte avklarade' innan du klickar på Resultat.");
-      return; // Avbryt om ingen dag är markerad
-    }
-
-    // Skicka antal gröna dagar till onClick (det kan användas för att uppdatera modalens innehåll)
-    onClick(greenDays, colors.length);
-  }
+  const isWeekend = todayIndex === 0 || todayIndex >= 5; // Kolla om det är fredag, lördag eller söndag
 
   return (
     <div className={styles.resultContainer}>
       <CustomButton
         className={styles.resultButton}
         buttonText="Resultat"
-        onClick={checkButtonsPushed}
-        disabled={!isFriday} // Deaktivera knappen om det inte är fredag
-        icon={LockWhite} // Skicka lock-ikonen här
+        onClick={onClick}
+        icon={LockWhite}
+        disabled={disabled} // Inaktivera knappen om det inte är fredag, lördag eller söndag
       />
     </div>
   );

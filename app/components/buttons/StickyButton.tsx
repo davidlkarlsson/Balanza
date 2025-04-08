@@ -1,19 +1,15 @@
-import styles from "~/components/buttons/StickyButton.module.css";
-import React from "react";
+import styles from "~/components/buttons/StickyButton.module.css"
+import React from "react"
 
 interface StickyButtonProps {
-    buttonText: string
-    onClick: () => void
-    
+  buttonText: string
+  onClick: () => void
 }
 
 export function StickyButton({ buttonText, onClick }: StickyButtonProps) {
-
-    return (
-        <div className={styles.buttonContainer}>
-            <button className={styles.btn} onClick={onClick} >
-                <p className={styles.btnText}>{buttonText}</p>
-            </button>
-        </div>
-    );
+  return (
+    <button className={styles.btn} onClick={onClick}>
+      <p className={styles.btnText}>{buttonText}</p>
+    </button>
+  )
 }

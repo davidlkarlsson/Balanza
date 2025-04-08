@@ -4,9 +4,49 @@
   align-items: center;
   text-align: center;
   font-size: 1.5rem;
-  width: 19.5rem;
+  width: 25rem;
+}
+
+.challengesContainer h4 {
+  color: #787878;
+  font-weight: normal;
+  margin: 0;
 }
 
 .challengesContainer h2 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   margin: 0;
+}
+
+.confirmButtonContainer {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.confirmButton {
+  background-color: #E1F4FF;
+  color: #12263a;
+  box-sizing: border-box;
+  border: 1px solid #12263a;
+  border-radius: 5px;
+  width: 6rem;
+  height: 3rem;
+}
+
+.confirmButton:hover {
+  transform: scale(1.05);
+  background-color: #12263a;
+  color: white;
+  border: none;
+}
+
+.chaoticStackContainer {
+  position: relative;
+  height: calc(25px * 7 + 20px); /* Höjd för stapling + lite marginal */
+  width: 60px;
+  margin: 30px auto;
+  perspective: 500px;
 }
