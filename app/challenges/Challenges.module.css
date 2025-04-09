@@ -50,3 +50,21 @@
   margin: 30px auto;
   perspective: 500px;
 }
+
+.resultContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bold {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.italic {
+  font-style: italic;
+  margin-top: 0;
+}

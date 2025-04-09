@@ -1,8 +1,40 @@
-.container {
+.sliderWrapper {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1rem 0;
+  height: 70vh;
+}
+
+.slide {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 70vh;
-  margin-bottom: 10rem;
+  gap: 1rem;
+}
+
+.weekCard {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #fffdf6;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card {
+  border-radius: 8px;
+  padding: 1rem;
+  flex: 1;
+  text-align: center;
+}
+
+
+.daysCompleted {
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.myResult {
+  margin-bottom: 50px;
 }
