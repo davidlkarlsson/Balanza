@@ -9,7 +9,7 @@ console.log(history)
 export function History() {
   return (
     <div className={styles.container}>
-      <CustomCard id={0} title="Historik" description={""} />
+      <h1>Mina resultat</h1>
     </div>
   )
 }

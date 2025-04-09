@@ -23,7 +23,7 @@
   color: #12263a;
   text-decoration: none;
   padding: 1rem;
-  border-radius: 2px;
+  border-radius: 5px;
 }
 
 .nav-links li a:hover {
@@ -92,7 +92,7 @@
 }
 
 /* Media Query: Visa hamburgermeny på små skärmar */
-@media (max-width: 1055px) {
+@media (max-width: 1300px) {
   .nav-desktop {
     display: none;
   }

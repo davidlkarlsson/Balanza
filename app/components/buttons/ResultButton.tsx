@@ -18,7 +18,7 @@ export function ResultButton({ onClick, disabled = false }: ResultButtonProps) {
         buttonText="Resultat"
         onClick={onClick}
         icon={LockWhite}
-        disabled={disabled} // Inaktivera knappen om det inte är fredag, lördag eller söndag
+        //disabled={disabled} // Inaktivera knappen om det inte är fredag, lördag eller söndag
       />
     </div>
   );

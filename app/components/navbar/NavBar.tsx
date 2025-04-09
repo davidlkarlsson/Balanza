@@ -41,7 +41,7 @@ export default function NavBar() {
               to="/"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
-              Utmaningar
+              No Spend Week
             </NavLink>
           </li>
           <li>
@@ -49,7 +49,7 @@ export default function NavBar() {
               to="/history"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
-              Historik
+              Mina Resultat
             </NavLink>
           </li>
           <li>
@@ -57,7 +57,7 @@ export default function NavBar() {
               to="/savingtips"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
-              Dagens spartips
+              Dagens Spartips!
             </NavLink>
           </li>
         </ul>
@@ -82,7 +82,7 @@ export default function NavBar() {
             className={({ isActive }) => (isActive ? "active" : "")}
             onClick={() => setMenuOpen(false)}
           >
-            Utmaningar
+            No Spend Week
           </NavLink>
         </li>
         <li>
@@ -91,7 +91,7 @@ export default function NavBar() {
             className={({ isActive }) => (isActive ? "active" : "")}
             onClick={() => setMenuOpen(false)}
           >
-            Historik
+            Mina Resultat
           </NavLink>
         </li>
         <li>
@@ -100,7 +100,7 @@ export default function NavBar() {
             className={({ isActive }) => (isActive ? "active" : "")}
             onClick={() => setMenuOpen(false)}
           >
-            Dagens spartips
+            Dagens Spartips!
           </NavLink>
         </li>
       </ul>

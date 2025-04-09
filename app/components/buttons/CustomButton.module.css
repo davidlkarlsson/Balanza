@@ -1,56 +1,52 @@
 .btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 19.5rem;
-    height: 3.9375rem;
-    border: none;
-    border-radius: 2.25rem;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 6px 0px rgba(255, 132, 0, 0.25); 
-    padding: 1rem 5.4375rem;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 19.5rem;
+  height: 3.9375rem;
+  border: none;
+  border-radius: 2.25rem;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 6px 0px rgba(255, 132, 0, 0.25);
+  padding: 1rem 4rem;
+  cursor: pointer;
 }
 
 .btn:disabled {
-    opacity: 50%;
-    transform: none !important;
-    cursor: default;
-    box-shadow: none;
+  opacity: 50%;
+  transform: none !important;
+  cursor: default;
+  box-shadow: none;
 }
 
 .btnText {
-    font-size: 1.25rem;
-    font-weight: 500;
-    font-style: normal;
-    font-family: "Bricolage Grotesque";
+  font-size: 1.25rem;
+  font-weight: 500;
+  font-style: normal;
+  font-family: "Bricolage Grotesque";
 }
 
 .btn:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 .btn:active {
-    transform: scale(0.98);
+  transform: scale(0.98);
 }
 
 .buttonContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
 
 .lockIcon {
-    display: none;
+  display: none;
 }
 
 .btn:disabled .lockIcon {
-    display: inline-block;
-    padding-right: 1rem;
+  display: inline-block;
+  padding-right: 1rem;
 }
-
-
-
-

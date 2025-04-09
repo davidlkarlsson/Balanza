@@ -10,8 +10,9 @@ import {
   saveToLocalStorage,
 } from "~/components/utilities/localStorageUtils";
 import { getWeekNumber } from "~/components/utilities/dateUtils";
-import { motion } from "motion/react";
 import type { HistoryObject } from "~/types/HistoryObject";
+import ChaoticStackAnimation from "~/components/animation/ChaoticStackAnimation";
+import ConfettiAnimation from "~/components/animation/ConfettiAnimation";
 
 export function Challenges() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,6 +34,7 @@ export function Challenges() {
   );
 
   const [resetTrigger, setResetTrigger] = useState(0);
+  const [weekColors, setWeekColors] = useState<string[]>([]);
 
   const todayIndex = new Date().getDay();
   const weekNumber = getWeekNumber();
@@ -89,59 +91,59 @@ export function Challenges() {
       daysTotal: totalDays,
     };
 
-    // 👉 Hämta tidigare historik
+    // Hämta tidigare historik
     const existingHistory: HistoryObject[] =
       loadFromLocalStorage("history") || [];
 
-    // 👉 Lägg till ny vecka i historiken
+    // Lägg till ny vecka i historiken
     const updatedHistoryList = [...existingHistory, weeklyHistory];
 
-    // 👉 Uppdatera state + spara i localStorage
+    // Uppdatera state + spara i localStorage
     setHistoryList(updatedHistoryList);
     saveToLocalStorage("history", updatedHistoryList);
 
     // ✅ Lås veckan efter resultat
-    saveToLocalStorage("weekDone", true);
-    setWeekDone(true);
+    //saveToLocalStorage("weekDone", true);
+    // setWeekDone(true);
+
+    // ✅ Hämta weekColors innan de tas bort
+    const colors = loadFromLocalStorage("weekColors") || [];
+    setWeekColors(colors); // Spara weekColors till state
 
     // 👉 Rensa veckan om du vill börja på ny sen
-    removeFromLocalStorage("weekColors")
+    removeFromLocalStorage("weekColors");
 
     // ✅ Rensa även knapparna direkt i state
-  setResetTrigger((prev) => prev + 1);
+    setResetTrigger((prev) => prev + 1);
   };
 
-  // Skapa en lista av dagar för animationen, baserat på completedDays och totalDays
-  const days = Array.from({ length: totalDays }, (_, index) => {
-    const isCompleted = index < completedDays; // Markera om dagen är slutförd
-    return isCompleted ? "#c5fcc3" : "#ffa2a2"; // Grön för slutförd, röd för ej slutförd
-  });
+  const figmaPositions = [
+    { x: 0, y: 0, rotate: 0 }, // dag 1
+    { x: -5, y: -32, rotate: 0 }, // dag 2
+    { x: 0, y: -64, rotate: 0 }, // dag 3
+    { x: -5, y: -96, rotate: 0 }, // dag 4
+    { x: 5, y: -130, rotate: 15 }, // dag 5
+  ];
 
   return (
     <div className={styles.challengesContainer}>
-      <h4>Vecka {weekNumber}</h4>
+      <h4>v.{weekNumber}</h4>
       <h2>
-        No spend-week{" "}
+        No spend week
         <StickyButton
           buttonText={"?"}
           onClick={() => handleOpenModal("info", 0, 0)}
         />
       </h2>
 
-      <MultiColorButtons weekDone={weekDone} resetTrigger={resetTrigger}/>
+      <MultiColorButtons weekDone={weekDone} resetTrigger={resetTrigger} />
       <ResultButton onClick={handleResultButtonClick} disabled={weekDone} />
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         {modalContent === "info" && (
           <div>
             <h2>Hur funkar det? 🤔</h2>
-            <p>
-              För varje dag låses en ny knapp upp och du får två val - antingen
-              har du spenderat pengar eller inte.
-            </p>
-            <p>
-              - För icke spenderat trycker du en gång på dagens knapp så att den
-              blir GRÖN 🟢
-            </p>
+            <p>Varje dag får du en ny chans att hålla dig till utmaningen:</p>
+            <p>1 tryck 🟢</p>
             <p>- Vid två tryck blir knappen RÖD 🔴</p>
             <p>När du gjort hela veckan kan du klicka på Resultat-knappen.</p>
             <p>Du kan sedan gå in i Historik och se din utveckling!</p>
@@ -198,64 +200,11 @@ export function Challenges() {
               <p>Bättre lycka nästa gång! 😞</p>
             ) : (
               <>
+                <ConfettiAnimation numberOfPieces={800} />
                 <p>
                   Du klarade {completedDays}/{totalDays} dagar, bra jobbat!
                 </p>
-
-                {/* Huller om buller staplade klossar */}
-                <div className={styles.chaoticStackContainer}>
-                  {days.map((color, index) => {
-                    const isLast = index === days.length - 1;
-
-                    // Slumpmässig förskjutning i x-led och rotation
-                    const randomOffset = Math.random() * 40 - 20; // -20 till +20 px
-                    const rotation = Math.random() * 10 - 5; // -5 till 5 grader
-
-                    const finalOffset = isLast
-                      ? randomOffset + 30
-                      : randomOffset;
-                    const finalRotation = isLast ? rotation + 10 : rotation / 2;
-
-                    const delay = index * 0.2 + Math.random() * 0.3;
-
-                    return (
-                      <motion.div
-                        key={index}
-                        initial={{
-                          y: -100,
-                          opacity: 0,
-                          rotate: rotation,
-                          x: randomOffset,
-                        }}
-                        animate={{
-                          y: index * -2,
-                          opacity: 1,
-                          rotate: finalRotation,
-                          x: finalOffset,
-                        }}
-                        transition={{
-                          delay: delay,
-                          type: "spring",
-                          stiffness: 80,
-                          damping: 12,
-                          mass: 0.8,
-                          bounce: 0.4,
-                        }}
-                        style={{
-                          backgroundColor: color,
-                          position: "absolute",
-                          bottom: `${index * 28}px`,
-                          width: "50px",
-                          height: "25px",
-                          boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-                          borderRadius: "2px",
-                          border: "2px solid rgba(0,0,0,0.1)",
-                          zIndex: index, // för djup
-                        }}
-                      />
-                    );
-                  })}
-                </div>
+                <ChaoticStackAnimation colors={weekColors} />
               </>
             )}
           </div>

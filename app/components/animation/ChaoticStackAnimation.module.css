@@ -1,0 +1,7 @@
+.chaoticStackContainer {
+    position: relative;
+    height: calc(30px * 5 + 20px); /* Höjd för stapling + lite marginal */
+    width: 60px;
+    margin: 30px auto;
+    perspective: 500px;
+  }

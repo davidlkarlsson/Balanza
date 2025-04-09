@@ -1,0 +1,9 @@
+.confettiContainer {
+    position: fixed; /* Se till att confetti är fixed på skärmen */
+    top: 0;
+    left: 0;
+    z-index: -1000; /* Lägre z-index än modal för att lägga sig bakom */
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+}
