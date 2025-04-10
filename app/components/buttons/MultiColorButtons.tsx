@@ -68,7 +68,7 @@ export function MultiColorButtons({ weekDone, resetTrigger }: Props) {
     <div className={styles.multiColorContainer}>
       {weekDays.map((day, index) => {
         const isFutureDay = index + 1 > todayIndex
-        const isDisabled = weekDone //|| isFutureDay;
+        const isDisabled = weekDone || isFutureDay;
         const text = (): string => {
           if (colors[index] === "#c5fcc3") {
             return "WOHO!"

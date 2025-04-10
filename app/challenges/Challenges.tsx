@@ -103,8 +103,8 @@ export function Challenges() {
     saveToLocalStorage("history", updatedHistoryList)
 
     // ✅ Lås veckan efter resultat
-    //saveToLocalStorage("weekDone", true);
-    // setWeekDone(true);
+    saveToLocalStorage("weekDone", true);
+    setWeekDone(true);
 
     // ✅ Hämta weekColors innan de tas bort
     const colors = loadFromLocalStorage("weekColors") || []
@@ -206,7 +206,7 @@ export function Challenges() {
             ) : (
               <>
                 <ConfettiAnimation numberOfPieces={800} />
-                <p>
+                <p className={styles.congrats}>
                   Du klarade {completedDays} av {totalDays} dagar, bra jobbat!
                 </p>
                 <ChaoticStackAnimation colors={weekColors} />

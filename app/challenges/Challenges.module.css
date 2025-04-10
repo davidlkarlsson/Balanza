@@ -56,6 +56,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .bold {
@@ -67,4 +68,8 @@
 .italic {
   font-style: italic;
   margin-top: 0;
+}
+
+.congrats {
+  margin-bottom: 2rem;
 }
