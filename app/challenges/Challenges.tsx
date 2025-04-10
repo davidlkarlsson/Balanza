@@ -144,9 +144,13 @@ export function Challenges() {
             <h2>Hur går det till? 🤔</h2>
             <p>Varje dag får du en ny chans att hålla dig till utmaningen:</p>
             <p className={styles.bold}>1 tryck 🟢</p>
-            <p className={styles.italic}>Du klarade dagen utan att köpa något onödigt - snyggt jobbat!</p>
+            <p className={styles.italic}>
+              Du klarade dagen utan att köpa något onödigt - snyggt jobbat!
+            </p>
             <p className={styles.bold}>2 tryck 🔴</p>
-            <p className={styles.italic}>Du råkade spendera... sånt som händer!</p>
+            <p className={styles.italic}>
+              Du råkade spendera... sånt som händer!
+            </p>
             <p>När du klickat i alla dagar kan du hämta resultatet!</p>
           </div>
         )}
@@ -169,8 +173,8 @@ export function Challenges() {
           <div>
             <h2>Är du säker på att du är klar? ✅</h2>
             <p>
-              När du klickar på 'Ja' avslutar du denna veckas utmaning och
-              har inte möjlighet att ändra dina val.
+              När du klickar på 'Ja' avslutar du denna veckas utmaning och har
+              inte möjlighet att ändra dina val.
             </p>
             <div className={styles.confirmButtonContainer}>
               <button
@@ -203,7 +207,7 @@ export function Challenges() {
               <>
                 <ConfettiAnimation numberOfPieces={800} />
                 <p>
-                  Du klarade {completedDays}/{totalDays} dagar, bra jobbat!
+                  Du klarade {completedDays} av {totalDays} dagar, bra jobbat!
                 </p>
                 <ChaoticStackAnimation colors={weekColors} />
               </>

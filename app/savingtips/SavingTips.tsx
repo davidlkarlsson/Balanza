@@ -5,26 +5,11 @@ import styles from "./SavingTips.module.css"
 import { getWeekNumber } from "~/components/utilities/dateUtils"
 
 export function SavingTips() {
-  const [tipList, setTipList] = useState<SavingTip[]>([
-    {
-      id: 0,
-      title: "",
-      description: "",
-    },
-  ])
-
+  const [tipList, setTipList] = useState<SavingTip[]>([])
   const [weekNumber, setWeekNumber] = useState<number>(0)
   const [tipIndex, setTipIndex] = useState<number>(0)
 
-  function getTodaysTip(): number {
-    setWeekNumber(getWeekNumber)
-    const today = new Date()
-    const weekday = today.getDay() // ger ett nummer 0-6 beroende på vilken veckodag det är, 0 = söndag, 1 = måndag osv
-
-    const isEvenWeek = weekNumber % 2 === 0
-    return isEvenWeek ? weekday : weekday + 7
-  }
-
+  // ✅ Hämta data + sätt vecka
   useEffect(() => {
     async function fetchData() {
       try {
@@ -38,14 +23,31 @@ export function SavingTips() {
       }
     }
 
+    setWeekNumber(getWeekNumber())
     fetchData()
-
-    setTipIndex(getTodaysTip())
   }, [])
+
+  // ✅ Räkna ut rätt tips när både vecka och data finns
+  useEffect(() => {
+    if (tipList.length === 0 || weekNumber === 0) return
+
+    const today = new Date()
+    const weekday = today.getDay() // 0-6 (söndag till lördag)
+    const isEvenWeek = weekNumber % 2 === 0
+
+    let index = isEvenWeek ? weekday + 7 : weekday
+
+    // ✅ Om index > antal tips, börja om
+    if (index >= tipList.length) {
+      index = index % tipList.length
+    }
+
+    setTipIndex(index)
+  }, [weekNumber, tipList])
 
   return (
     <div className={styles.savingTipsContainer}>
-      {tipList.length > 1 ? (
+      {tipList.length > 0 ? (
         <CustomCard
           title={tipList[tipIndex].title}
           description={tipList[tipIndex].description}

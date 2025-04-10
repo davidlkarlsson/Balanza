@@ -1,25 +1,24 @@
-import { motion } from "motion/react";
-import styles from "~/components/animation/ChaoticStackAnimation.module.css";
+import { motion } from "motion/react"
+import styles from "~/components/animation/ChaoticStackAnimation.module.css"
 
 interface ChaoticStackProps {
-  colors: string[];  // Mottar färger som props
+  colors: string[] // Mottar färger som props
 }
 
 const ChaoticStackAnimation = ({ colors }: ChaoticStackProps) => {
-
   const stackPositions = [
-    { x: 0, y: 0, rotate: 0 },  // Dag 1
+    { x: 0, y: 0, rotate: 0 }, // Dag 1
     { x: -5, y: -32, rotate: 0 }, // Dag 2
     { x: 0, y: -64, rotate: 0 }, // Dag 3
     { x: -5, y: -96, rotate: 0 }, // Dag 4
     { x: 5, y: -130, rotate: 15 }, // Dag 5
-  ];
+  ]
 
   return (
     <div className={styles.chaoticStackContainer}>
       {colors.map((color, index) => {
-        const position = stackPositions[index] || { x: 0, y: 0, rotate: 0 };
-        const delay = index * 0.4;
+        const position = stackPositions[index] || { x: 0, y: 0, rotate: 0 }
+        const delay = index * 0.4
 
         return (
           <motion.div
@@ -44,15 +43,14 @@ const ChaoticStackAnimation = ({ colors }: ChaoticStackProps) => {
               width: "30px",
               height: "30px",
               boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-              borderRadius: "2px",
               border: "2px solid rgba(0,0,0,0.1)",
               zIndex: index,
             }}
           />
-        );
+        )
       })}
     </div>
-  );
-};
+  )
+}
 
-export default ChaoticStackAnimation;
+export default ChaoticStackAnimation
