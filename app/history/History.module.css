@@ -43,7 +43,8 @@
 }
 
 .slides {
-  width: auto;
+  width: 100%;
+  max-width: 500px;
 }
 
 .slide {
@@ -93,6 +94,11 @@
 
 .arrowButton:hover {
   transform: scale(1.05);
+}
+
+.arrowButton:disabled {
+  opacity: 0;
+  cursor: default;
 }
 
 /* Mobiljusteringar */

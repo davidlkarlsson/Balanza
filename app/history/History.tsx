@@ -7,7 +7,6 @@ import arrowLeft from "~/images/arrow_left.svg";
 import arrowRight from "~/images/arrow_right.svg";
 import { useEffect, useState } from "react";
 import type { HistoryObject } from "~/types/HistoryObject";
-import { div } from "motion/react-client";
 
 export function History() {
   const [history, setHistory] = useState<HistoryObject[]>([]);
@@ -23,26 +22,15 @@ export function History() {
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
-
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     slides: {
-      perView: 1,
+      perView: 1, // Visar en slide åt gången
       spacing: 10,
-    },
-    breakpoints: {
-      "(max-width: 768px)": {
-        slides: {
-          perView: 1,
-          spacing: 10,
-          origin: 'center',
-        },
-      },
     },
     slideChanged(slider) {
       setCurrentSlide(slider.track.details.rel);
     },
   });
-  
 
   const groupedHistory = [];
   for (let i = 0; i < history.length; i += 2) {
@@ -58,21 +46,24 @@ export function History() {
 
       {groupedHistory.length === 0 ? (
         <div className={styles.noHistoryContainer}>
-        <p className={styles.noHistory}>Du har inga resultat att visa ännu. </p>
-        <p className={styles.noHistory}>Avsluta en <span className={styles.bold}>No Spend Week</span> för att se dina resultat.</p>
+          <p className={styles.noHistory}>
+            Du har inga resultat att visa ännu.{" "}
+          </p>
+          <p className={styles.noHistory}>
+            Avsluta en <span className={styles.bold}>No Spend Week</span> för
+            att se dina resultat.
+          </p>
         </div>
       ) : (
         <div className={styles.sliderContainer}>
-
-          {currentSlide > 0 && (
-            <button
-              onClick={() => instanceRef.current?.prev()}
-              className={styles.arrowButton}
-              aria-label="Föregående kort"
-            >
-              <img src={arrowLeft} alt="Vänsterpil-ikon" />
-            </button>
-          )}
+          <button
+            onClick={() => instanceRef.current?.prev()}
+            className={styles.arrowButton}
+            aria-label="Föregående kort"
+            disabled={currentSlide === 0}
+          >
+            <img src={arrowLeft} alt="Vänsterpil-ikon" />
+          </button>
 
           <div ref={sliderRef} className={`keen-slider ${styles.slides}`}>
             {groupedHistory.map((group, index) => (
@@ -94,15 +85,14 @@ export function History() {
             ))}
           </div>
 
-          {currentSlide < groupedHistory.length - 1 && (
-            <button
-              onClick={() => instanceRef.current?.next()}
-              className={styles.arrowButton}
-              aria-label="Nästa kort"
-            >
-              <img src={arrowRight} alt="Högerpil-ikon" />
-            </button>
-          )}
+          <button
+            onClick={() => instanceRef.current?.next()}
+            className={styles.arrowButton}
+            aria-label="Nästa kort"
+            disabled={currentSlide === groupedHistory.length - 1}
+          >
+            <img src={arrowRight} alt="Högerpil-ikon" />
+          </button>
         </div>
       )}
     </div>
